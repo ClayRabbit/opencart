@@ -7,7 +7,8 @@ class MySQLi {
 		try {
 			$mysqli = @new \MySQLi($hostname, $username, $password, $database, $port);
 		} catch (mysqli_sql_exception $e) {
-			throw new \Exception('Error: Could not make a database link using ' . $username . '@' . $hostname . '!');
+			error_log('Error: Could not make a database link using ' . $username . '@' . $hostname . '!');
+			die('Error: Could not make a database link');
 		}
 
 		if (!$mysqli->connect_errno) {
